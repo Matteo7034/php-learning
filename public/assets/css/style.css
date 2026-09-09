@@ -1,0 +1,10 @@
+.gif-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.gif-container img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

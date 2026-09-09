@@ -1,0 +1,9 @@
+# File temporanei ed esportazioni
+/tmp/
+*.log
+*.txt
+
+# File di sistema e IDE
+.DS_Store
+.idea/
+.vscode/
