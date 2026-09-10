@@ -8,15 +8,17 @@
 </head>
 <body class="<?php echo htmlspecialchars($currentTheme ?? 'dark'); ?>">
     <header>
-        <nav>
-            <a href="index.php?page=home">Home</a>
-            <a href="index.php?page=about">Chi Siamo</a>
-            <!-- Selettore di tema per le preferenze interfaccia --> 
-            <span style="float: right;">
-                Tema:
-                <a href="index.php?page=<?php echo htmlspecialchars($_GET['page'] ?? 'home'); ?>&theme=dark">Scuro</a> | 
-                <a href="index.php?page=<?php echo htmlspecialchars($_GET['page'] ?? 'home'); ?>&theme=light">Chiaro</a>
-            </span>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="index.php?page=home" class="nav-btn <?php echo ($page === 'home') ? 'active' : ''; ?>">Home</a>
+                <a href="index.php?page=about" class="nav-btn <?php echo ($page === 'about') ? 'active' : ''; ?>">Chi Siamo</a>
+            </div>
+            
+            <div class="theme-toggle">
+                <span class="theme-label">Tema:</span>
+                <a href="index.php?page=<?php echo htmlspecialchars($page); ?>&theme=dark" class="theme-btn <?php echo ($currentTheme === 'dark') ? 'active' : ''; ?>">Scuro</a>
+                <a href="index.php?page=<?php echo htmlspecialchars($page); ?>&theme=light" class="theme-btn <?php echo ($currentTheme === 'light') ? 'active' : ''; ?>">Chiaro</a>
+            </div>
         </nav>
     </header>
     <main>
