@@ -1,26 +1,30 @@
 <?php
+    // Avvia la sessione
+    session_start();
+    // Verifico condizione di consenso cookie 
+    $hasConsent = isset($_COOKIE['user_consent']) && $_COOKIE['user_consent'] === 'accepted';
     
-    setcookie("fav_food","pizza",time()+(86400*2),"/");
-    setcookie("fav_drink","coffe",time()+(86400*2),"/");
-    setcookie("fav_dessert","ice cream ",time()+(86400*2),"/");
-
+    // Preferenza interfaccia Dark / Light
+    if(isset($_GET['theme'])) {
+        $themeChoice = $_GET['theme'] === 'light' ? 'light' : 'dark';
+        $_SESSION['theme'] = $themeChoice;
+        if($hasConsent){
+            setcookie('site_theme',$themeChoice,time() + (86400 * 30), '/');
+        }
+    }
+    // Tema attivo
+    $currentTheme = $_SESSION['theme'] ?? $_COOKIE['site_theme'] ?? 'dark';
 
     require_once __DIR__ . '/../includes/header.php';
 
-    echo "<div style='backgroud: #f0f0f0; padding: 10px; margin-botton: 20px;'>";
-    echo "<strong> Cookie correnti nel browser:</strong><br>";
-
-    foreach($_COOKIE as $key => $value){
-        echo htmlspecialchars($key) . " = " . htmlspecialchars($value) . "<br>";
-    }
-    if(isset($_COOKIE["fav_food"])){
-        echo"<p>BUY SOME " . htmlspecialchars($_COOKIE["fav_food"]) . " !!!</p>";
-    }
-    else{
-        echo"<p> I don't know your favorite food (ricarica la pagina se è la prima volta!)</p>";
-    }
+    // Box di Debug per vedere la Sessione e i Cookie
+    echo "<div style='background: #222; color: #fff; padding: 12px; margin: 15px; border-radius: 6px; font-family: monospace;'>";
+    echo "<strong>ID Sessione PHP:</strong> " . session_id() . "<br>";
+    echo "<strong>Tema Attivo:</strong> " . htmlspecialchars($currentTheme) . "<br>";
+    echo "<strong>Stato Consenso Privacy:</strong> " . ($hasConsent ? "<span style='color:#4caf50;'>ACCETTATO</span>" : "<span style='color:#ff9800;'>NON ACCETTATO / RIFIUTATO</span>") . "<br>";
     echo "</div>";
 
+    // Routing pagine
     $page = $_GET['page'] ?? 'home';
     switch ($page) {
         case 'about':
