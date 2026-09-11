@@ -17,7 +17,24 @@ main {
     margin: 0 auto;
     padding: 20px 0;
 }
+.benvenuto{
+    display: inline-block;
+    color: black;
+    background-color: green;
+    border-radius: 10px;
+    padding: 10px 22px;
+    margin: 10px 0 20px 0;
+    transition: backgroud-color 0.2s, box-shadow 0.2;
+}
+.benvenuto h1 {
+    margin: 0;
+    font-size: 1.6rem;
+}
 
+.benvenuto:hover{
+    color: yellow;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+}
 /* --------------------------------------------------
    2. NAVBAR E LAYOUT DI NAVIGAZIONE
    -------------------------------------------------- */

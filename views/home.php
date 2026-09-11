@@ -1,4 +1,6 @@
-<h1>Benvenuto nel mio sito!</h1>
+<div class="benvenuto">
+    <h1>Benvenuto nel mio sito!</h1>
+</div>
 <p>Questo è il contenuto principale della homepage caricato dinamicamente.</p>
 
 <div class="gif-container">

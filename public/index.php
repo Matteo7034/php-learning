@@ -1,6 +1,6 @@
 <?php
     // Attiva o disattivo il DEBUG
-    define('DEBUG_MODE', false);
+    define('DEBUG_MODE', true);
 
     if (DEBUG_MODE) {
         // Mostra tutti gli errori PHP a schermo

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.getElementById("cookie-close");
 
     // Controlla se l'utente ha già preso una decisione
+    
     if (!localStorage.getItem("cookieConsent")) {
         banner.classList.remove("hidden");
     }
@@ -11,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Azione al click su "Accetta All"
     acceptBtn.addEventListener("click", function () {
         localStorage.setItem("cookieConsent", "accepted");
-        //Imposta un cookie con scandenza 1 anno per il consenso
         document.cookie = "user_consent=accepted; max-age=" + (86400*366) + "; path=/";
         banner.classList.add("hidden");
         console.log("cookie accettato");
